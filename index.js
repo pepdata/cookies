@@ -216,7 +216,7 @@ Cookie.prototype.toHeader = function() {
   if (this.priority ) header += "; priority=" + this.priority.toLowerCase()
   if (this.sameSite ) header += "; samesite=" + (this.sameSite === true ? 'strict' : this.sameSite.toLowerCase())
   if (this.secure   ) header += "; secure"
-  if (this.httpOnly ) header += "; httponly"
+  if (this.httpOnly || this.name.endsWith('.sig')) header += "; httponly"
   if (this.partitioned) header += '; partitioned'
 
   return header
